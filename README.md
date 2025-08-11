@@ -1,1 +1,38 @@
 # Deep-Generative-Models-Autoregressive-Models
+
+## Overview
+
+In this project, I worked with an **autoregressive generative model** to create text.
+Specifically, I used the **OpenAI GPT-2** model — a Transformer-based architecture built on self-attention blocks, which has become the backbone of many state-of-the-art **Natural Language Processing (NLP)** systems.
+
+I fine-tuned GPT-2 separately on two different datasets to adapt its general language modeling capabilities to new domains:
+
+* **Shakespearean text** *(trained-on)*
+* **Abstracts from the NeurIPS conference** *(trained-on)*
+
+The goal was to see how well GPT-2 could learn and reproduce the style and content of each domain, and how it handled out-of-distribution text.
+
+---
+
+## Results Interpretation
+
+All my outputs — including generated text samples, raw model outputs, and plots — are in the `submission/` folder.
+
+The histograms (`neurips.png`, `random.png`, `shakespeare.png`) show **log-likelihood distributions** for three datasets I evaluated:
+
+* **NeurIPS abstracts** *(trained-on, in-domain)*: This is where the model performed best, with the highest log-likelihoods (closest to zero). That makes sense because GPT-2 was originally trained on mostly modern English, so fine-tuning it on NeurIPS abstracts plays directly to its strengths.
+* **Shakespeare text** *(trained-on, in-domain)*: The results are still strong, but slightly worse than NeurIPS. That’s expected — the older, more archaic style is further from the model’s pretraining distribution, so it’s a bit harder to model perfectly.
+* **Random text** *(out-of-distribution)*: Log-likelihoods are much lower (farther from zero), which is exactly what I want — it means the model can recognize that these sequences are incoherent and outside what it was trained to generate.
+
+**My takeaway:**
+Fine-tuning GPT-2 gave me a model that’s very sensitive to the style and content of the data it’s trained on. It nails NeurIPS abstracts, does a solid job on Shakespeare despite the stylistic gap, and confidently rejects random nonsense as unlikely.
+
+---
+
+## Key Skills Demonstrated
+
+* Fine-tuning large language models (GPT-2) for domain-specific text generation
+* Understanding and applying **autoregressive** sequence modeling
+* Evaluating models using **log-likelihood** and interpreting results
+* Working with both **in-domain** and **out-of-distribution** data to assess robustness
+* Visualizing and interpreting performance differences across datasets
