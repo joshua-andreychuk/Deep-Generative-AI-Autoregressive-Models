@@ -1,4 +1,4 @@
-# Deep-Generative-Models-Autoregressive-Models
+# Deep-Generative-AI-Autoregressive-Models
 
 ## Overview
 
